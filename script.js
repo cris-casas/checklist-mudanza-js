@@ -1,9 +1,9 @@
 let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+let buttons = document.querySelectorAll('button');
 
 checkboxes.forEach(function(checkbox) {
     checkbox.addEventListener('change', function() {
-        let text = document.getElementById(checkbox.value);
-        text.style.textDecoration = checkbox.checked ? "line-through" : "none";
+        checkbox.parentElement.style.textDecoration = checkbox.checked ? "line-through" : "none";
         /*   
         if(checkbox.checked){
             text.style.textDecoration = "line-through";
@@ -13,6 +13,17 @@ checkboxes.forEach(function(checkbox) {
         */
     });
   });
+
+buttons.forEach((button) => {
+    button.addEventListener('click', function() {
+        // por cada boton clicado
+        // display none el label que con id incluido en el id del button
+        button.parentElement.remove();
+        console.log("remove")
+    });
+  });
+
+
 
 
 
