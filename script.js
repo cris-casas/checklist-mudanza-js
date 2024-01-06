@@ -1,9 +1,10 @@
 let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-let buttons = document.querySelectorAll('button');
+let deleteButtons = document.querySelectorAll('button[value="delete"]');
+let editButtons = document.querySelectorAll('button[value="edit"]');
 
 checkboxes.forEach(function(checkbox) {
     checkbox.addEventListener('change', function() {
-        checkbox.parentElement.style.textDecoration = checkbox.checked ? "line-through" : "none";
+        checkbox.nextElementSibling.style.textDecoration = checkbox.checked ? "line-through" : "none";
         /*   
         if(checkbox.checked){
             text.style.textDecoration = "line-through";
@@ -14,14 +15,17 @@ checkboxes.forEach(function(checkbox) {
     });
   });
 
-buttons.forEach((button) => {
+deleteButtons.forEach((button) => {
     button.addEventListener('click', function() {
-        // por cada boton clicado
-        // display none el label que con id incluido en el id del button
         button.parentElement.remove();
-        console.log("remove")
     });
   });
+
+  editButtons.forEach((button) => {
+    button.addEventListener('click', function() {
+        button.previousElementSibling.focus();
+    });
+});
 
 
 
